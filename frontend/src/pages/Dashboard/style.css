@@ -1,0 +1,105 @@
+main {
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: auto;
+    padding: 25px;
+    background-color: var(--color-main);
+    border: 1px solid var(--color-main);
+    border-radius: 3px ;
+    box-shadow: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    }
+  
+main section.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-content);
+    padding: 5px;
+    border: 1px solid var(--color-content);  
+    border-radius: 2px;
+    height: auto;
+    padding-bottom: 15px;
+    box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+main section h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+    font-family: 'Roboto';
+    color: #fff;
+}
+
+main section form {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 50px;
+    row-gap: 20px;
+}
+
+section form .input{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 200px;
+}
+
+section form input {
+    padding: 8px;
+    font-size: 20px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+section form button {
+    background-color: var(--color-button-register);
+    cursor: pointer;
+    padding: 10px;
+    height: auto;
+    width: 100%;
+    border: 1px solid #0799f5;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 650;
+}
+
+section form button:hover {
+    background-color: #0799f5;
+}
+  
+main aside {
+    margin: 15px 0 0 0;
+    background-color: rgb(11, 10, 13);
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 2px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+main aside ul {
+    list-style: none;
+}
+aside ul li {
+    display: flex;
+    flex-direction: column;
+}
+
+aside button {
+    margin-left: 430px;
+    padding: 10px;
+
+    background-color: #ff0000;
+    color: #fff;
+    border: 1px solid #900000;
+    border-radius: 2px;
+    
+    font-weight: bold;
+}
