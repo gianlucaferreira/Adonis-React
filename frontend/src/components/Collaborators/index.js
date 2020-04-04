@@ -5,8 +5,6 @@ import '../Collaborators/style.css';
 import api from '../../services/api';
 
 export default function Collaborators({ id, name, value }) {
-
-
     async function handleDelete(id) {
         await api.delete(`/app/${id}`);
     }
