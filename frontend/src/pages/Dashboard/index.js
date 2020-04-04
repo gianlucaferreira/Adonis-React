@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api';
 import Collaborators from '../../components/Collaborators';
@@ -16,7 +16,9 @@ export default function Dashboard() {
     const token = localStorage.getItem('token');
 
     const response = await api.post('/app' ,  {
-      token, name, value
+       name, value
+    }, {
+      headers: { "Authorization" : `Bearer ${token}` }
     })
 
     if (response.data) {
@@ -26,6 +28,21 @@ export default function Dashboard() {
     setName('');
     setValue('');
   }
+
+  const [collaborators, setCollaborator] = useState([]);
+
+    useEffect(() => {
+        async function listCollaborators() {
+            const token = localStorage.getItem('token');
+
+            const response = await api.get('/app', {
+                headers: { "Authorization" : `Bearer ${token}` }
+            });
+            
+            setCollaborator(response.data)
+        } 
+        listCollaborators()
+    }, []);
 
   return (
     <main>
@@ -51,10 +68,7 @@ export default function Dashboard() {
           <button type="submit">CADASTRAR COLABORADOR</button>
         </form>
       </section>
-
-      <aside>
-          <Collaborators />
-      </aside>      
+        {collaborators.map(coll => (<Collaborators key={coll.id} name={coll.name} value={coll.value} id={coll.id} />))}
     </main>
   );
 }

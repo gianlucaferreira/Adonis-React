@@ -16,7 +16,7 @@ export default function Login({ history }) {
         window.alert('Informe o email e senha');
         setEmail('');
         setPassword('');
-    } else if (password.length != 6) {
+    } else if (password.length !== 6) {
         window.alert('Senha tem que ter pelo menos 6 caracteres');
         setEmail('');
         setPassword('');
