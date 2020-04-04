@@ -5,12 +5,12 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 
-import auth from './auth';
+import { isAutheticated } from './services/auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} 
         render={props => 
-        auth() ? (
+        isAutheticated() ? (
             <Component {...props} />
         ) : (
             <Redirect to={{ pathname: '/', state: { from: props.location } }} />

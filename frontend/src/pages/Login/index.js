@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
+import { login } from '../../services/auth';
 
 import './style.css';
 
@@ -26,12 +27,7 @@ export default function Login({ history }) {
 
     const { token } = response.data;
 
-    if (!token) {
-      window.alert('Usuário inexitente \n Cadastre-se agora') 
-      
-    }
-
-    localStorage.setItem('token', token);
+    login(token);
 
     history.push('/dashboard');
   }

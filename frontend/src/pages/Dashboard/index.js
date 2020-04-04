@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api';
+import { logout, getToken } from '../../services/auth';
 import Collaborators from '../../components/Collaborators';
 
 import './style.css';
 
-export default function Dashboard() {
+export default function Dashboard({ history }) {
 
   const [name, setName] = useState('');
   const [value, setValue] = useState('');
@@ -13,18 +14,9 @@ export default function Dashboard() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const token = localStorage.getItem('token');
-
-    const response = await api.post('/app' ,  {
+    await api.post('/app' ,  {
        name, value
-    }, {
-      headers: { "Authorization" : `Bearer ${token}` }
     })
-
-    if (response.data) {
-        window.alert(`${response.data.message}`)
-    }
-
     setName('');
     setValue('');
   }
@@ -33,21 +25,26 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function listCollaborators() {
-            const token = localStorage.getItem('token');
-
-            const response = await api.get('/app', {
-                headers: { "Authorization" : `Bearer ${token}` }
-            });
+            const response = await api.get('/app');
             
             setCollaborator(response.data)
         } 
         listCollaborators()
-    }, []);
+    }, [collaborators]);
+
+
+      function leave() {
+        const token = getToken();
+  
+        logout(token);
+
+        history.push('/');
+      }
+    
 
   return (
     <main>
       <section className="content">
-        <h1>CADASTRE <em>COLABORADORES</em></h1>
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label htmlFor="collaborator">NOME DO COLABORADOR*</label>
@@ -69,6 +66,8 @@ export default function Dashboard() {
         </form>
       </section>
         {collaborators.map(coll => (<Collaborators key={coll.id} name={coll.name} value={coll.value} id={coll.id} />))}
+
+        <button className="logout" onClick={leave}>SAIR</button>
     </main>
   );
 }

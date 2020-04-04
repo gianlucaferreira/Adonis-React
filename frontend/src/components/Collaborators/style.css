@@ -13,12 +13,13 @@ aside ul {
     list-style: none;
 }
 aside ul li {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
 }
 
-aside button.delete {
-    margin-left: 430px;
+aside button{
+    margin-left: 500px;
     padding: 10px;
 
     background-color: #ff0000;

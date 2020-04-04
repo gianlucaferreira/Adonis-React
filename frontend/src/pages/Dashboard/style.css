@@ -72,6 +72,20 @@ section form button {
 section form button:hover {
     background-color: #0799f5;
 }
+
+main button.logout {
+    width: 150px;
+    height: 30px;
+    margin-top: 15px;
+    border: 1px solid #800000;
+    border-radius: 2px;
+    background-color: #8B0000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    cursor: pointer;
+    margin-left: 290px;
+}
   
 
 
