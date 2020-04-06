@@ -14,7 +14,7 @@ export default function Login({ history }) {
     event.preventDefault();
 
     if (!email || !password) {
-        window.alert('Informe o email e senha');
+        
         setEmail('');
         setPassword('');
     } else if (password.length !== 6) {
@@ -34,7 +34,6 @@ export default function Login({ history }) {
 
   return (
     <div className="login">
-      <h1>LOGIN</h1><hr/>
         <section>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email">E-MAIL</label>

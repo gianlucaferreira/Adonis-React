@@ -9,12 +9,10 @@ class AppController {
         return data;
     }
 
-    async store({ request, response ,auth }) {
+    async store({ request }) {
         const data = request.only([ 'name', 'value' ]);
 
         await Collaborator.create(data);
-
-        return { message : "Colaborador cadastrado com sucesso" };
     }
 
     async destroy({ params }) {

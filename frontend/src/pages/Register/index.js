@@ -11,13 +11,19 @@ export default function Register({ history }) {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const reponse = await api.post('/register', { username, email, password });
-
-    if (reponse.data) {
-      history.push('/');
-    } else {
-      window.alert('Erro ao cadastrar');
+    if (!email || !password) {
+      window.alert('Informe o email e senha');
+      setEmail('');
+      setPassword('');
+    } else if (password.length !== 6) {
+        window.alert('Senha tem que ter pelo menos 6 caracteres');
+        setEmail('');
+        setPassword('');
     }
+
+    await api.post('/register', { username, email, password });
+
+    history.push('/');
   }
 
   return (
