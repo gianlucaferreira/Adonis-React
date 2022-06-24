@@ -8,8 +8,6 @@ BACKEND
 
 - Banco de Dados em PostgresSql
 
-- Testes feitos no insomnia
-
 
 FRONTEND
 
